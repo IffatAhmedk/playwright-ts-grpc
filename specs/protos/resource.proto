@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package resource;
+
+service ResourceService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc Read(ReadRequest) returns (ReadResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+message CreateRequest {
+  Resource resource = 1;
+}
+
+message CreateResponse {
+  string id = 1;
+  Resource resource = 2;
+}
+
+message ReadRequest {
+  string id = 1;
+}
+
+message ReadResponse {
+  Resource resource = 1;
+}
+
+message UpdateRequest {
+  string id = 1;
+  Resource resource = 2;
+}
+
+message UpdateResponse {
+  bool success = 1;
+  Resource resource = 2;
+}
+
+message DeleteRequest {
+  string id = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+message Resource {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string status = 4;
+}
